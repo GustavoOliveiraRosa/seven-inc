@@ -28,6 +28,43 @@ def login_Employees():
 
 
 # Lista todos os empregados
+@app.route('/employees', methods=['GET','POST'])
+def Employees():
+
+    if request.method == 'GET':
+        # Listando usuários por ordem de adição
+        comando = cmdmysql(str('select id,nome,DATE_FORMAT(bornDate, "%d/%m/%Y"),salary,position from empregados ORDER BY id desc'))
+        payload = []
+        content = {}
+        for result in comando:
+            content = {'id':result[0],'nome': result[1], 'bornDate': result[2],'salary':result[3] , 'position':result[4]}
+            payload.append(content)
+            content = {}
+        return jsonify(payload), 201
+    
+    if request.method == 'POST':
+        data = request.get_json()
+        content = request.json
+        comando = cmdmysql(str('INSERT INTO empregados (nome, bornDate,salary,position) values ("')+str(content['nome'])+('",STR_TO_DATE("')+str(content['bornDate'])+('","%d/%m/%Y"), ')+str(content['salary'])+(',"')+str(content['position'])+('");'))
+        return jsonify(Status='Successs'), 200
+
+
+
+# Lista apenas dados do empregado solicitado.
+@app.route('/employees/<id>', methods=['GET'])
+def istarEmpregados_Employees2(id):
+    # Listando usuários por ordem de adição
+    comando = cmdmysql(str('select id,nome,DATE_FORMAT(bornDate, "%d/%m/%Y"),salary,position from empregados where id=')+str(id)+str(' ORDER BY id desc'))
+    payload = []
+    content = {}
+    for result in comando:
+       content = {'id':result[0],'nome': result[1], 'bornDate': result[2],'salary':result[3] , 'position':result[4]}
+       payload.append(content)
+       content = {}
+    return jsonify(payload), 201
+
+
+# Criação de novo empregado
 @app.route('/employees', methods=['GET'])
 def listarEmpregados_Employees():
     # Listando usuários por ordem de adição
@@ -41,17 +78,6 @@ def listarEmpregados_Employees():
     return jsonify(payload), 201
 
 
-@app.route('/employees/<id>', methods=['GET'])
-def istarEmpregados_Employees2(id):
-    # Listando usuários por ordem de adição
-    comando = cmdmysql(str('select id,nome,DATE_FORMAT(bornDate, "%d/%m/%Y"),salary,position from empregados where id=')+str(id)+str(' ORDER BY id desc'))
-    payload = []
-    content = {}
-    for result in comando:
-       content = {'id':result[0],'nome': result[1], 'bornDate': result[2],'salary':result[3] , 'position':result[4]}
-       payload.append(content)
-       content = {}
-    return jsonify(payload), 201
 
 
 
