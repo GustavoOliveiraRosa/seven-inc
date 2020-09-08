@@ -18,7 +18,6 @@ app = Flask(__name__)
 def login_Employees():
     data = request.get_json()
     content = request.json
-    print(content)
     comando = cmdmysql(str('SELECT * from usuarios where email="')+str(content['email'])+str('" and senha="')+str(content['senha'])+str('"'))
     if comando != ():
         for row in comando:
@@ -77,6 +76,12 @@ def ListarEmpregados_Employees2(id):
 
     if request.method == 'DELETE':
         comando = cmdmysql(str('DELETE FROM empregados WHERE id=')+str(id))
+        return jsonify(Status='Successs'), 200
+
+    if request.method == 'PUT':
+        data = request.get_json()
+        content = request.json
+        comando = cmdmysql(str('UPDATE empregados SET nome="')+str(content['nome'])+str('",bornDate=STR_TO_DATE("')+str(content['bornDate'])+str('","%d/%m/%Y"),salary="')+str(content['salary'])+str('",position="')+str(content['position'])+str('" WHERE id=')+str(id)+str(''))
         return jsonify(Status='Successs'), 200
 
 
