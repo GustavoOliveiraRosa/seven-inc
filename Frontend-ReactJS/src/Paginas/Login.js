@@ -6,6 +6,7 @@ class Login extends React.Component {
   constructor(props) {
     super(props)
     this.state = { email: '' }
+    this.state = { senha: '' }
     this.changeEmail = this.changeEmail.bind(this)
     this.changeSenha = this.changeSenha.bind(this)
     this.handleSubmit = this.handleSubmit.bind(this)
@@ -20,8 +21,18 @@ class Login extends React.Component {
   }
 
   handleSubmit(event) {
-    alert(this.state.email+this.state.senha)
     event.preventDefault()
+    if(this.state.email == "" | this.state.senha == ""){
+      alert("Preencha todos os campos.")
+     
+
+    }
+    else{
+      alert("Login permitido")
+    }
+
+
+
   }
 
   render() {
@@ -32,12 +43,12 @@ class Login extends React.Component {
 
       <p> 
         <label for="nome_login">Seu e-mail</label>
-        <input id="nome_login" name="nome_login" required="required" type="text" placeholder="email@email.com"/>
+        <input  onChange={this.changeEmail} id="nome_login" name="nome_login" type="text" placeholder="email@email.com"/>
       </p>
        
       <p> 
         <label for="email_login">Sua senha</label>
-        <input id="email_login" name="email_login" required="required" type="password" placeholder="sua senha" /> 
+        <input onChange={this.changeSenha} id="email_login" name="email_login" type="password" placeholder="sua senha" /> 
       </p>
        
       <p> 
@@ -46,7 +57,7 @@ class Login extends React.Component {
       </p>
        
       <p> 
-        <input type="submit" value="Logar" /> 
+        <input  onClick={this.handleSubmit} type="submit" value="Logar" /> 
       </p>
 
     </form>
