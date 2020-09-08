@@ -31,8 +31,8 @@ def login_Employees():
 @app.route('/employees', methods=['GET','POST'])
 def Employees():
 
+    # Listando usuários por ordem de adição
     if request.method == 'GET':
-        # Listando usuários por ordem de adição
         comando = cmdmysql(str('select id,nome,DATE_FORMAT(bornDate, "%d/%m/%Y"),salary,position from empregados ORDER BY id desc'))
         payload = []
         content = {}
@@ -41,14 +41,20 @@ def Employees():
             payload.append(content)
             content = {}
         return jsonify(payload), 201
-    
+
+    # Criando novo usuário
     if request.method == 'POST':
+
         data = request.get_json()
         content = request.json
-        comando = cmdmysql(str('INSERT INTO empregados (nome, bornDate,salary,position) values ("')+str(content['nome'])+('",STR_TO_DATE("')+str(content['bornDate'])+('","%d/%m/%Y"), ')+str(content['salary'])+(',"')+str(content['position'])+('");'))
-        return jsonify(Status='Successs'), 200
-
-
+        
+        # Verifica se usuário já existe, com base no nome e no cargo.
+        comando = cmdmysql(str('SELECT * from empregados where nome="')+str(content['nome'])+str('" and position="')+str(content['position'])+str('"'))
+        if comando != ():
+            return jsonify(Status='Fail'), 200
+        else:
+            comando = cmdmysql(str('INSERT INTO empregados (nome, bornDate,salary,position) values ("')+str(content['nome'])+('",STR_TO_DATE("')+str(content['bornDate'])+('","%d/%m/%Y"), ')+str(content['salary'])+(',"')+str(content['position'])+('");'))
+            return jsonify(Status='Successs'), 200
 
 # Lista apenas dados do empregado solicitado.
 @app.route('/employees/<id>', methods=['GET'])
