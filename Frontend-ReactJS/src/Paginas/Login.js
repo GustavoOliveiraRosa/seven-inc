@@ -1,4 +1,6 @@
-import React, { Component } from 'react';
+import React from 'react';
+import './App.css';
+
 
 class Login extends React.Component {
   constructor(props) {
@@ -24,20 +26,30 @@ class Login extends React.Component {
 
   render() {
     return (
-      <form onSubmit={this.handleSubmit}>
-        <input
-          type="text"
-          value={this.state.email}
-          onChange={this.changeEmail}
-        />
-        <input
-          type="password"
-          value={this.state.senha}
-          onChange={this.changeSenha}
-        />
-        <br />
-        <input type="submit" value="Submit" />
-      </form>
+      <form className="form_login" method="post" action=""> 
+
+      <h1 className="titulo">Login Seven Inc</h1> 
+
+      <p> 
+        <label for="nome_login">Seu e-mail</label>
+        <input id="nome_login" name="nome_login" required="required" type="text" placeholder="email@email.com"/>
+      </p>
+       
+      <p> 
+        <label for="email_login">Sua senha</label>
+        <input id="email_login" name="email_login" required="required" type="password" placeholder="sua senha" /> 
+      </p>
+       
+      <p> 
+        <input type="checkbox" name="manterlogado" id="manterlogado" value="" /> 
+        <label  for="manterlogado">Manter-me logado</label>
+      </p>
+       
+      <p> 
+        <input type="submit" value="Logar" /> 
+      </p>
+
+    </form>
     )
   }
 }
