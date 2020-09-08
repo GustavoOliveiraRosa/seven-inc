@@ -3,17 +3,29 @@ import pymysql
 import os
 from datetime import datetime
 
-# Importando arquivo de conexão com o MYSQL
+
+################## Importando Funcoes
+
+# 1- Conexao com BD
+from functions.mysql_connector import *
 
 
-# Inicio API REST - Employees
 
 app = Flask(__name__)
 
 # Validação de login de usuário
 @app.route('/Employees/login', methods=['POST'])
-def login_curtocurso():
-    return 200
+def login_Employees():
+    data = request.get_json()
+    content = request.json
+    print(content)
+    comando = cmdmysql(str('SELECT * from usuarios where email="')+str(content['email'])+str('" and senha="')+str(content['senha'])+str('"'))
+    if comando != ():
+        for row in comando:
+            return jsonify(Status='Success', id=row[0]), 200
+    else:
+        return jsonify(Status='Fail'), 200
+
 
 
 
