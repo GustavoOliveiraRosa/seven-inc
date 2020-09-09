@@ -19,9 +19,9 @@ class Login extends React.Component {
 
  componentDidMount() {
   const status_logado = localStorage.getItem('@status_logado');
-  /*if (status_logado === 'true'){
+  if (status_logado === 'true'){
     this.setState({redirect: true});
-  }*/
+  }
 }
 
   changeEmail(event) {
@@ -70,24 +70,27 @@ class Login extends React.Component {
   render() {
     return (
       <center>
-      <form className="box_login">
+        { this.state.redirect === true && <Route exact path="/"><Redirect to="/Inicio" /></Route> }
+        <div className="box_Login" > 
+      <form className="m-4">
                 <h3 className="m-4">&#9830; Entrar Employees 	&#9830;</h3>
 
           <div>
                 <div className="form-group">
-                    <label className="m-4">&#8594; Email</label>
-                    <input type="email" className="form-control" placeholder="Enter email" />
+                    <label>&#8594; Email &#8592;</label>
+                    <input onChange={this.changeEmail} type="email" className="form-control" placeholder="Enter email" />
                 </div>
 
                 <div className="form-group">
-                    <label className="m-4">&#8594; Senha</label>
-                    <input type="password" className="form-control" placeholder="Enter password" />
+                    <label className="m-4">&#8594; Senha &#8592;</label>
+                    <input onChange={this.changeSenha}  type="password" className="form-control" placeholder="Enter password" />
                 </div>
 
-                <button type="submit" className="btn btn-primary btn-block">Entrar</button>
+                <button onClick={this.handleSubmit} className="btn btn-primary btn-block">Entrar</button>
                 
                 </div>
             </form>
+            </div>
             </center>
     )
   }
