@@ -2,7 +2,7 @@ from flask import Flask, jsonify, request
 import pymysql
 import os
 from datetime import datetime
-
+from flask_cors import CORS
 
 ################## Importando Funcoes
 
@@ -12,6 +12,7 @@ from functions.mysql_connector import *
 
 
 app = Flask(__name__)
+CORS(app)
 
 # Validação de login de usuário
 @app.route('/employees/login', methods=['POST'])
