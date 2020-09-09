@@ -18,9 +18,9 @@ class Login extends React.Component {
 
  componentDidMount() {
   const status_logado = localStorage.getItem('@status_logado');
-  if (status_logado === 'true'){
+  /*if (status_logado === 'true'){
     this.setState({redirect: true});
-  }
+  }*/
 }
 
   changeEmail(event) {
@@ -75,18 +75,13 @@ class Login extends React.Component {
       <h1 className="titulo">Login Seven Inc</h1> 
 
       <p> 
-        <label for="nome_login">Seu e-mail</label>
+        <label for="nome_login">E-mail</label><br />
         <input  onChange={this.changeEmail} id="nome_login" name="nome_login" type="text" placeholder="email@email.com"/>
       </p>
        
       <p> 
-        <label for="email_login">Sua senha</label>
+        <label for="email_login">Senha</label><br />
         <input onChange={this.changeSenha} id="email_login" name="email_login" type="password" placeholder="sua senha" /> 
-      </p>
-       
-      <p> 
-        <input type="checkbox" name="manterlogado" id="manterlogado" value="" /> 
-        <label  for="manterlogado">Manter-me logado</label>
       </p>
        
       <p> 

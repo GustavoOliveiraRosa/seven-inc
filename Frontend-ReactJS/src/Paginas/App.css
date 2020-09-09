@@ -7,7 +7,7 @@
 /*---------------------------------------- */
 
 body {
-    background-color: #00BFFF;
+    background-color: #00BFFF !important; 
 }
 
 /*---------------------------------------- */
@@ -23,14 +23,27 @@ body {
     text-align:center;
 }
 
+table {
+  width: 100%;
+  background-color: #f1f1c1;
+}
+
+.table_responsive{
+  margin:10px;
+}
+
 .titulo{
-    font-size: 52px;
+    font-size: 30%px;
     color: #01455E;
     padding: 2px 0 10px 0;
     font-family: Serif;
     font-weight: bold;
     text-align: center;
     padding-bottom: 30px;
+}
+
+.text{
+  color: black;
 }
    
 label{
@@ -40,7 +53,6 @@ label{
 
 
 input {
-    outline: none;
     max-width: 60%;
     margin-left:50px;
   }
