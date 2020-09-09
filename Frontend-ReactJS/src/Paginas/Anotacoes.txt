@@ -1,0 +1,5 @@
+{ href === true && <Route exact path="/"><Redirect to="/Inicio" /></Route> }
+
+https://stackoverflow.com/questions/49350217/react-how-do-you-call-a-function-from-inside-another-function
+
+https://stackoverflow.com/questions/45896307/reactjs-when-fetch-post-and-use-then-function-to-setstate

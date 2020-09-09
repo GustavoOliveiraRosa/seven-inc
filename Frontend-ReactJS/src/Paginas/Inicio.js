@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
+import { withRouter } from "react-router-dom";
 
-class Page1 extends Component {
+
+class Inicio extends Component {
   render() {
     return (
       <div>
@@ -10,4 +12,4 @@ class Page1 extends Component {
   }
 }
 
-export default Page1;
+export default Inicio;

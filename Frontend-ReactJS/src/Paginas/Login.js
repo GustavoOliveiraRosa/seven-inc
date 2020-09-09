@@ -1,30 +1,34 @@
 import React from 'react';
 import './App.css';
 import api from './Api';
-
-
+import {Switch, Route, Redirect } from 'react-router-dom';
 class Login extends React.Component {
   constructor(props) {
     super(props)
-    this.state = { email: '' }
-    this.state = { senha: '' }
+    this.state = { 
+      redirect: false,
+      email: '',
+      senha: ''
+           }
     this.changeEmail = this.changeEmail.bind(this)
     this.changeSenha = this.changeSenha.bind(this)
     this.handleSubmit = this.handleSubmit.bind(this)
   }
 
   changeEmail(event) {
-    this.setState({ email: event.target.value })
-    
+    this.setState({ email: event.target.value }) 
   }
+
 
 
   changeSenha(event) {
     this.setState({ senha: event.target.value })
   }
 
-
+  
   handleSubmit(event) {
+    const self = this;
+
     event.preventDefault()
     if(this.state.email === "" | this.state.senha === ""){
       alert("Preencha todos os campos.")
@@ -46,7 +50,8 @@ class Login extends React.Component {
           alert("Usuário ou senha inválidos")
         }
         else{
-          alert("Logado")
+          self.setState({redirect: true});
+          console.log(self.state.redirect)
         }
       })
     }
@@ -55,6 +60,8 @@ class Login extends React.Component {
 
   render() {
     return (
+      <div>
+      { this.state.redirect === true && <Route exact path="/"><Redirect to="/Inicio" /></Route> }
       <form className="form_login" method="post" action=""> 
 
       <h1 className="titulo">Login Seven Inc</h1> 
@@ -79,6 +86,7 @@ class Login extends React.Component {
       </p>
 
     </form>
+    </div>
     )
   }
 }
