@@ -6,9 +6,6 @@
 /*---------------------------------------- */
 /*---------------------------------------- */
 
-body {
-    background-color: #00BFFF !important; 
-}
 
 /*---------------------------------------- */
 /*---------------------------------------- */
@@ -18,65 +15,13 @@ body {
 /*---------------------------------------- */
 /*---------------------------------------- */
 
-.form_login {
-    margin-top:5%;
-    text-align:center;
+.box_login{
+  max-width: 70%;
+  vertical-align: top;
+  margin: 0;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }
 
-table {
-  width: 100%;
-  background-color: #f1f1c1;
-}
-
-.table_responsive{
-  margin:10px;
-}
-
-.titulo{
-    font-size: 30%px;
-    color: #01455E;
-    padding: 2px 0 10px 0;
-    font-family: Serif;
-    font-weight: bold;
-    text-align: center;
-    padding-bottom: 30px;
-}
-
-.text{
-  color: black;
-}
-   
-label{
-    margin-left:10px;
-    position: relative;
-}
-
-
-input {
-    max-width: 60%;
-    margin-left:50px;
-  }
-   
-input:not([type="checkbox"]){
-    width: 95%;
-    margin-top: 4px;
-    padding: 10px;    
-    border: 1px solid #b2b2b2;
-    
-  }
-
-  input[type="submit"]{
-    width: 30%!important;
-    cursor: pointer;  
-    background: rgb(61, 157, 179);
-    color: #fff;
-    font-size: 20px;  
-    border: 1px solid #fff;   
-    margin-bottom: 20px;  
-    text-shadow: 0 1px 1px #333;
-  }
-   
-  input[type="submit"]:hover{
-    background: #4ab3c6;
-  }
-   

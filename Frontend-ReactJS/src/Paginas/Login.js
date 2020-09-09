@@ -1,7 +1,8 @@
 import React from 'react';
 import './App.css';
 import api from './Api';
-import {Switch, Route, Redirect } from 'react-router-dom';
+import {Switch, Route, Redirect, Link } from 'react-router-dom';
+import '../../node_modules/bootstrap/dist/css/bootstrap.min.css';
 class Login extends React.Component {
   constructor(props) {
     super(props)
@@ -68,28 +69,26 @@ class Login extends React.Component {
 
   render() {
     return (
-      <div>
-      { this.state.redirect === true && <Route exact path="/"><Redirect to="/Inicio" /></Route> }
-      <form className="form_login" method="post" action=""> 
+      <center>
+      <form className="box_login">
+                <h3 className="m-4">&#9830; Entrar Employees 	&#9830;</h3>
 
-      <h1 className="titulo">Login Seven Inc</h1> 
+          <div>
+                <div className="form-group">
+                    <label className="m-4">&#8594; Email</label>
+                    <input type="email" className="form-control" placeholder="Enter email" />
+                </div>
 
-      <p> 
-        <label for="nome_login">E-mail</label><br />
-        <input  onChange={this.changeEmail} id="nome_login" name="nome_login" type="text" placeholder="email@email.com"/>
-      </p>
-       
-      <p> 
-        <label for="email_login">Senha</label><br />
-        <input onChange={this.changeSenha} id="email_login" name="email_login" type="password" placeholder="sua senha" /> 
-      </p>
-       
-      <p> 
-        <input  onClick={this.handleSubmit} type="submit" value="Logar" /> 
-      </p>
+                <div className="form-group">
+                    <label className="m-4">&#8594; Senha</label>
+                    <input type="password" className="form-control" placeholder="Enter password" />
+                </div>
 
-    </form>
-    </div>
+                <button type="submit" className="btn btn-primary btn-block">Entrar</button>
+                
+                </div>
+            </form>
+            </center>
     )
   }
 }
