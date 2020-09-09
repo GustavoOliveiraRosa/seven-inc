@@ -1,5 +1,6 @@
 import React from 'react';
 import './App.css';
+import api from './Api';
 
 
 class Login extends React.Component {
@@ -14,24 +15,41 @@ class Login extends React.Component {
 
   changeEmail(event) {
     this.setState({ email: event.target.value })
+    
   }
+
 
   changeSenha(event) {
     this.setState({ senha: event.target.value })
   }
 
+
   handleSubmit(event) {
     event.preventDefault()
-    if(this.state.email == "" | this.state.senha == ""){
+    if(this.state.email === "" | this.state.senha === ""){
       alert("Preencha todos os campos.")
-     
-
     }
     else{
-      alert("Login permitido")
+      const axios = require('axios')
+      axios.post(api+'/login', {
+        email: this.state.email,
+        senha:this.state.senha
+      },
+      {
+        headers: {
+          Authorization: 'access-control-allow-origin'
+        }
+      })
+      .then(function (response) {
+        console.log(response.data.Status)
+        if (response.data.Status === 'Fail'){
+          alert("Usuário ou senha inválidos")
+        }
+        else{
+          alert("Logado")
+        }
+      })
     }
-
-
 
   }
 
