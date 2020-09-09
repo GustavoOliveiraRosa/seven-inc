@@ -59,8 +59,8 @@ class Login extends React.Component {
           alert("Usuário ou senha inválidos")
         }
         else{
-          self.setState({redirect: true});
           localStorage.setItem('@status_logado', true);
+          self.setState({redirect: true});
         }
       })
     }

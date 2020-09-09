@@ -16,7 +16,7 @@ export default class Rotas extends Component {
         <Switch>
           <Route exact path='/' component={ Login } />
           <Route path='/Inicio' component={ Inicio } />
-          <Route path='/page2' component={ Page2 } />
+          <Route path='/Login' component={ Login } />
         </Switch>
       </div>
     );
