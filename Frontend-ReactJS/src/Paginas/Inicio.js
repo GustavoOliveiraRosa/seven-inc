@@ -3,10 +3,18 @@ import { withRouter } from "react-router-dom";
 
 
 class Inicio extends Component {
+  
+  componentDidMount() {
+    const status_logado = localStorage.getItem('@nome-do-app/chave');
+    if (status_logado === true){
+      this.setState({redirect: true});
+    }
+  }
+
   render() {
     return (
       <div>
-        <h2> Page 1 </h2>
+        <h2>Inicio </h2>
       </div>
     );
   }

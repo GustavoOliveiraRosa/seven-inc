@@ -14,6 +14,14 @@ class Login extends React.Component {
     this.changeSenha = this.changeSenha.bind(this)
     this.handleSubmit = this.handleSubmit.bind(this)
   }
+  
+
+ componentDidMount() {
+  const status_logado = localStorage.getItem('@status_logado');
+  if (status_logado === 'true'){
+    this.setState({redirect: true});
+  }
+}
 
   changeEmail(event) {
     this.setState({ email: event.target.value }) 
@@ -51,7 +59,7 @@ class Login extends React.Component {
         }
         else{
           self.setState({redirect: true});
-          console.log(self.state.redirect)
+          localStorage.setItem('@status_logado', true);
         }
       })
     }
