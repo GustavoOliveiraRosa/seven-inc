@@ -22,7 +22,7 @@ def login_Employees():
     comando = cmdmysql(str('SELECT * from usuarios where email="')+str(content['email'])+str('" and senha="')+str(content['senha'])+str('"'))
     if comando != ():
         for row in comando:
-            return jsonify(Status='Success', id=row[0]), 200
+            return jsonify(Status='Success'), 200
     else:
         return jsonify(Status='Fail'), 200
 
@@ -53,6 +53,8 @@ def Employees():
         if comando != ():
             return jsonify(Status='Fail'), 200
         else:
+            os.system("clear")
+            print(str('INSERT INTO empregados (nome, bornDate,salary,position) values ("')+str(content['nome'])+('",STR_TO_DATE("')+str(content['bornDate'])+('","%d/%m/%Y"), ')+str(content['salary'])+(',"')+str(content['position'])+('");'))
             comando = cmdmysql(str('INSERT INTO empregados (nome, bornDate,salary,position) values ("')+str(content['nome'])+('",STR_TO_DATE("')+str(content['bornDate'])+('","%d/%m/%Y"), ')+str(content['salary'])+(',"')+str(content['position'])+('");'))
             return jsonify(Status='Successs'), 200
 

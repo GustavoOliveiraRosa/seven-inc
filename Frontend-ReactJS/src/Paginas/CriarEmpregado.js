@@ -13,7 +13,7 @@ class CriarEmpregado extends Component {
       nome: '',
       salario: '',
       cargo: '',
-      date: new Date,
+      date: "",
       deslogar: false,
       data: []
     }
@@ -39,10 +39,39 @@ class CriarEmpregado extends Component {
 
   SendAPI(event){
     event.preventDefault();
-   alert(this.refs.myinput.getMaskedValue())
+
+   const self = this;
+
+   event.preventDefault()
+   if(this.state.nome === "" | this.refs.myinput.getMaskedValue() === '0.00' | this.state.cargo === "" | this.state.date === ""){
+     alert("Preencha todos os campos.")
+   }
+   else{
+    
+    const axios = require('axios')
+    axios.post(api, {
+      nome: this.state.nome,
+      salary:this.state.salario,
+      position:this.state.cargo,
+      bornDate:this.state.date.split("-").join("/"),
+    },
+    {
+      headers: {
+        Authorization: 'access-control-allow-origin'
+      }
+    })
+    .then(function (response) {
+      console.log(response.data.Status)
+      if (response.data.Status === 'Fail'){
+        alert("Fail")
+      }
+      else{
+        alert('Success')
+      }
+    })
 
 
-
+   }
 
 
 
@@ -55,6 +84,7 @@ class CriarEmpregado extends Component {
 
   render() {
     
+
     return (
       <div>
         {this.state.deslogar === true && <Route exact path="/"><Redirect to="/Login" /></Route>}
@@ -79,6 +109,7 @@ class CriarEmpregado extends Component {
     </ul>
   </div>
 </nav>
+
         <div className="titulo">
 
         <center>
@@ -105,7 +136,7 @@ class CriarEmpregado extends Component {
     <label >Cargo</label>
     <input type="text" onChange={(event) => this.setState({ cargo: event.target.value }) }   className="form-control" aria-describedby="emailHelp" placeholder="" />
   </div>
-  <button type="submit" className="btn btn-primary">Criar funcionário</button>
+  <button type="submit" onClick={this.SendAPI} className="btn btn-primary">Criar funcionário</button>
   </div>
       </div>
     );
