@@ -8,11 +8,13 @@ class Inicio extends Component {
   constructor(props) {
     super(props)
     this.state = {
+      CriarEmpregado: false,
       deslogar: false,
       data: []
     }
     this.Sair = this.Sair.bind(this);
     this.excluir_funcionario = this.excluir_funcionario.bind(this);
+    this.CriarEmpregado = this.CriarEmpregado.bind(this);
   }
 
   atualizaTabela(){
@@ -48,6 +50,10 @@ class Inicio extends Component {
     this.setState({ deslogar: true });
   }
 
+  CriarEmpregado() {
+    this.setState({ CriarEmpregado: true });
+  }
+
   excluir_funcionario(id) {
     const self = this;
     const axios = require('axios')
@@ -67,6 +73,7 @@ class Inicio extends Component {
   render() {
     return (
       <div>
+        {this.state.CriarEmpregado === true && <Route exact path="/"><Redirect to="/CriarEmpregado" /></Route>}
         {this.state.deslogar === true && <Route exact path="/"><Redirect to="/Login" /></Route>}
         <nav className="navbar navbar-expand-lg navbar navbar-dark bg-dark">
   <a className="navbar-brand" href="#">Employees</a>
@@ -81,7 +88,7 @@ class Inicio extends Component {
         <a className="nav-link" href="#">Inicio<span className="sr-only">(current)</span></a>
       </li>
       <li className="nav-item">
-        <a className="nav-link" href="#">Criar Usuário</a>
+        <a className="nav-link" href="#" onClick={this.CriarEmpregado}>Criar Usuário</a>
       </li>
       <li className="nav-item">
         <a className="nav-link"  href="#" onClick={this.Sair}>Sair</a>
