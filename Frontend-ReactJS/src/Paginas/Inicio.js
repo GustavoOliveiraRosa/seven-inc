@@ -68,13 +68,35 @@ class Inicio extends Component {
     return (
       <div>
         {this.state.deslogar === true && <Route exact path="/"><Redirect to="/Login" /></Route>}
-        
+        <nav className="navbar navbar-expand-lg navbar navbar-dark bg-dark">
+  <a className="navbar-brand" href="#">Employees</a>
+  
+  <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span className="navbar-toggler-icon"></span>
+  </button>
+
+  <div className="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul className="navbar-nav mr-auto">
+      <li className="nav-item active">
+        <a className="nav-link" href="#">Inicio<span className="sr-only">(current)</span></a>
+      </li>
+      <li className="nav-item">
+        <a className="nav-link" href="#">Criar Usuário</a>
+      </li>
+      <li className="nav-item">
+        <a className="nav-link"  href="#" onClick={this.Sair}>Sair</a>
+      </li>
+    </ul>
+    <form className="form-inline my-2 my-lg-0">
+      <input className="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Buscar por nome" />
+      <button className="btn btn-outline-success my-2 my-sm-0" type="submit">Buscar</button>
+    </form>
+  </div>
+</nav>
         <div className="titulo">
 
         <center>
-        <h1 className="m-4">Employees</h1>
-        <h5 className="m-4">Gerenciador de empregados</h5>
-        <button  onClick={this.Sair} className="btn btn-danger btn-block">Sair</button>
+        <h1 className="m-4">Gerenciador Empregados</h1>
         </center>
         
         </div>
