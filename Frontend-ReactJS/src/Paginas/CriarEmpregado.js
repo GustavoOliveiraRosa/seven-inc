@@ -14,6 +14,7 @@ class CriarEmpregado extends Component {
       salario: '',
       cargo: '',
       date: "",
+      empregadocriado: false,
       deslogar: false,
       data: []
     }
@@ -47,11 +48,11 @@ class CriarEmpregado extends Component {
      alert("Preencha todos os campos.")
    }
    else{
-    
+    const self = this;
     const axios = require('axios')
     axios.post(api, {
       nome: this.state.nome,
-      salary:this.state.salario,
+      salary:this.refs.myinput.getMaskedValue(),
       position:this.state.cargo,
       bornDate:this.state.date.split("-").join("/"),
     },
@@ -66,7 +67,8 @@ class CriarEmpregado extends Component {
         alert("Fail")
       }
       else{
-        alert('Success')
+        alert('Usuario criado com sucesso')
+        self.setState({ empregadocriado: true });
       }
     })
 
@@ -87,6 +89,7 @@ class CriarEmpregado extends Component {
 
     return (
       <div>
+        {this.state.empregadocriado === true && <Route exact path="/"><Redirect to="/Login" /></Route>}
         {this.state.deslogar === true && <Route exact path="/"><Redirect to="/Login" /></Route>}
         <nav className="navbar navbar-expand-lg navbar navbar-dark bg-dark">
   <a className="navbar-brand" href="#">Employees</a>
@@ -127,16 +130,15 @@ class CriarEmpregado extends Component {
     <label >Data de Inicio</label>
     <input onChange={(event) => this.setState({ date: event.target.value }) } type="date" data-date-format="DD MMMM YYYY" className="form-control" data-date-format='yy-mm-dd' aria-describedby="emailHelp" />
   </div>
-  
-  <div className="form-group">
-    <label >Salário</label>
-    <CurrencyInput decimalSeparator="." thousandSeparator="" ref="myinput"  className="form-control" />
-  </div>
   <div className="form-group">
     <label >Cargo</label>
     <input type="text" onChange={(event) => this.setState({ cargo: event.target.value }) }   className="form-control" aria-describedby="emailHelp" placeholder="" />
   </div>
-  <button type="submit" onClick={this.SendAPI} className="btn btn-primary">Criar funcionário</button>
+  <div className="form-group">
+    <label >Salário</label>
+    <CurrencyInput decimalSeparator="." thousandSeparator="" ref="myinput"  className="form-control" />
+  </div>
+  <button type="submit" onClick={(this.SendAPI)} className="btn btn-primary">Criar funcionário</button>
   </div>
       </div>
     );
