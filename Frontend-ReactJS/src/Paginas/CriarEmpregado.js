@@ -3,6 +3,9 @@ import './App.css';
 import api from './Api';
 import { Switch, Route, Redirect, Link } from 'react-router-dom';
 import '../../node_modules/bootstrap/dist/css/bootstrap.min.css';
+import CurrencyInput from 'react-currency-input';
+
+
 
 class CriarEmpregado extends Component {
   constructor(props) {
@@ -80,7 +83,7 @@ class CriarEmpregado extends Component {
   
   <div className="form-group">
     <label >Salário</label>
-    <input type="number" className="form-control" aria-describedby="emailHelp" placeholder="" />
+    <CurrencyInput className="form-control" ref="myinput" />
   </div>
   <div className="form-group">
     <label >Cargo</label>
