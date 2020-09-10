@@ -16,6 +16,7 @@ class CriarEmpregado extends Component {
       date: "",
       empregadocriado: false,
       deslogar: false,
+      voltarInicio: false,
       data: []
     }
     this.Sair = this.Sair.bind(this);
@@ -89,6 +90,7 @@ class CriarEmpregado extends Component {
 
     return (
       <div>
+        {this.state.voltarInicio === true && <Route exact path="/"><Redirect to="/Login" /></Route>}
         {this.state.empregadocriado === true && <Route exact path="/"><Redirect to="/Login" /></Route>}
         {this.state.deslogar === true && <Route exact path="/"><Redirect to="/Login" /></Route>}
         <nav className="navbar navbar-expand-lg navbar navbar-dark bg-dark">
@@ -101,7 +103,7 @@ class CriarEmpregado extends Component {
   <div className="collapse navbar-collapse" id="navbarSupportedContent">
     <ul className="navbar-nav mr-auto">
       <li className="nav-item active">
-        <a className="nav-link" href="#">Inicio</a>
+        <a className="nav-link"  onClick={() => this.setState({ voltarInicio: true })} href="#">Inicio</a>
       </li>
       <li className="nav-item">
         <a className="nav-link" href="#">Criar Usuário<span className="sr-only">(current)</span></a>

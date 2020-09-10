@@ -14,7 +14,6 @@ class Inicio extends Component {
     }
     this.Sair = this.Sair.bind(this);
     this.excluir_funcionario = this.excluir_funcionario.bind(this);
-    this.CriarEmpregado = this.CriarEmpregado.bind(this);
   }
 
   atualizaTabela(){
@@ -50,9 +49,7 @@ class Inicio extends Component {
     this.setState({ deslogar: true });
   }
 
-  CriarEmpregado() {
-    this.setState({ CriarEmpregado: true });
-  }
+
 
   excluir_funcionario(id) {
     const self = this;
@@ -88,7 +85,7 @@ class Inicio extends Component {
         <a className="nav-link" href="#">Inicio<span className="sr-only">(current)</span></a>
       </li>
       <li className="nav-item">
-        <a className="nav-link" href="#" onClick={this.CriarEmpregado}>Criar Usuário</a>
+        <a className="nav-link" href="#" onClick={() => this.setState({ CriarEmpregado: true })}>Criar Usuário</a>
       </li>
       <li className="nav-item">
         <a className="nav-link"  href="#" onClick={this.Sair}>Sair</a>
@@ -110,6 +107,7 @@ class Inicio extends Component {
         <table className="table table-dark ">
           <thead>
             <tr>
+              <th scope="col">ID</th>
               <th scope="col">Nome</th>
               <th scope="col">Data de inicio</th>
               <th scope="col">Salario</th>
@@ -121,6 +119,7 @@ class Inicio extends Component {
             {
               this.state.data.map((resposta =>
                 <tr>
+                  <th scope="row">{resposta.id}</th>
                   <th scope="row">{resposta.nome}</th>
               <td>{resposta.bornDate}</td>
                   <td>{resposta.salary}</td>
