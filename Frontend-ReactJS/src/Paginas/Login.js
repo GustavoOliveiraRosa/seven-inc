@@ -11,8 +11,6 @@ class Login extends React.Component {
       email: '',
       senha: ''
            }
-    this.changeEmail = this.changeEmail.bind(this)
-    this.changeSenha = this.changeSenha.bind(this)
     this.handleSubmit = this.handleSubmit.bind(this)
   }
   
@@ -23,16 +21,6 @@ class Login extends React.Component {
     this.setState({redirect: true});
   }
 }
-
-  changeEmail(event) {
-    this.setState({ email: event.target.value }) 
-  }
-
-
-
-  changeSenha(event) {
-    this.setState({ senha: event.target.value })
-  }
 
   
   handleSubmit(event) {
@@ -78,12 +66,12 @@ class Login extends React.Component {
           <div>
                 <div className="form-group">
                     <label>&#8594; Email &#8592;</label>
-                    <input onChange={this.changeEmail} type="email" className="form-control" placeholder="Enter email" />
+                    <input onChange={(event) => this.setState({ email: event.target.value }) } type="email" className="form-control" placeholder="Enter email" />
                 </div>
 
                 <div className="form-group">
                     <label className="m-4">&#8594; Senha &#8592;</label>
-                    <input onChange={this.changeSenha}  type="password" className="form-control" placeholder="Enter password" />
+                    <input onChange={(event) => this.setState({ senha: event.target.value }) }  type="password" className="form-control" placeholder="Enter password" />
                 </div>
 
                 <button onClick={this.handleSubmit} className="btn btn-primary btn-block">Entrar</button>

@@ -6,15 +6,19 @@ import '../../node_modules/bootstrap/dist/css/bootstrap.min.css';
 import CurrencyInput from 'react-currency-input';
 
 
-
 class CriarEmpregado extends Component {
   constructor(props) {
     super(props)
     this.state = {
+      nome: '',
+      salario: '',
+      cargo: '',
+      date: new Date,
       deslogar: false,
       data: []
     }
     this.Sair = this.Sair.bind(this);
+    this.SendAPI = this.SendAPI.bind(this);
   }
 
   componentDidMount() {
@@ -33,8 +37,24 @@ class CriarEmpregado extends Component {
     this.setState({ deslogar: true });
   }
 
+  SendAPI(event){
+    event.preventDefault();
+   alert(this.refs.myinput.getMaskedValue())
+
+
+
+
+
+
+
+}
+
+
+
+
 
   render() {
+    
     return (
       <div>
         {this.state.deslogar === true && <Route exact path="/"><Redirect to="/Login" /></Route>}
@@ -57,10 +77,6 @@ class CriarEmpregado extends Component {
         <a className="nav-link"  href="#" onClick={this.Sair}>Sair</a>
       </li>
     </ul>
-    <form className="form-inline my-2 my-lg-0">
-      <input className="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Buscar por nome" />
-      <button className="btn btn-outline-success my-2 my-sm-0" type="submit">Buscar</button>
-    </form>
   </div>
 </nav>
         <div className="titulo">
@@ -74,20 +90,20 @@ class CriarEmpregado extends Component {
 <div className="ml-4 mr-4">
   <div className="form-group">
     <label >Nome Completo</label>
-    <input type="text" className="form-control" aria-describedby="emailHelp" placeholder="" />
+    <input type="text" onChange={(event) => this.setState({ nome: event.target.value }) }   className="form-control" aria-describedby="emailHelp" placeholder="" />
   </div>
   <div className="form-group">
     <label >Data de Inicio</label>
-    <input type="date" className="form-control" data-date-format='yy-mm-dd' aria-describedby="emailHelp" />
+    <input onChange={(event) => this.setState({ date: event.target.value }) } type="date" data-date-format="DD MMMM YYYY" className="form-control" data-date-format='yy-mm-dd' aria-describedby="emailHelp" />
   </div>
   
   <div className="form-group">
     <label >Salário</label>
-    <CurrencyInput className="form-control" ref="myinput" />
+    <CurrencyInput decimalSeparator="." thousandSeparator="" ref="myinput"  className="form-control" />
   </div>
   <div className="form-group">
     <label >Cargo</label>
-    <input type="text" className="form-control" aria-describedby="emailHelp" placeholder="" />
+    <input type="text" onChange={(event) => this.setState({ cargo: event.target.value }) }   className="form-control" aria-describedby="emailHelp" placeholder="" />
   </div>
   <button type="submit" className="btn btn-primary">Criar funcionário</button>
   </div>
