@@ -53,10 +53,8 @@ def Employees():
         if comando != ():
             return jsonify(Status='Fail'), 200
         else:
-            os.system("clear")
-            print(str('INSERT INTO empregados (nome, bornDate,salary,position) values ("')+str(content['nome'])+('",STR_TO_DATE("')+str(content['bornDate'])+('","%d/%m/%Y"), ')+str(content['salary'])+(',"')+str(content['position'])+('");'))
-            comando = cmdmysql(str('INSERT INTO empregados (nome, bornDate,salary,position) values ("')+str(content['nome'])+('",STR_TO_DATE("')+str(content['bornDate'])+('","%d/%m/%Y"), ')+str(content['salary'])+(',"')+str(content['position'])+('");'))
-            return jsonify(Status='Successs'), 200
+            comando = cmdmysql(str('INSERT INTO empregados (nome, bornDate,salary,position) values ("')+str(content['nome'])+('",STR_TO_DATE("')+str(content['bornDate'])+('","%Y/%m/%d"), ')+str(content['salary'])+(',"')+str(content['position'])+('");'))
+            return jsonify(Status='Success'), 200
 
 
 # Lista apenas dados do empregado solicitado.
