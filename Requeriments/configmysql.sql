@@ -12,17 +12,13 @@ CREATE TABLE usuarios (
     PRIMARY KEY (id_usuario)
 ) CHARSET = utf8;
 
-
-
 insert into usuarios (email,senha) values ("gustavoolrosa2019@gmail.com","123");
-
-
 
 CREATE TABLE empregados (
     id INT (11) NOT NULL AUTO_INCREMENT COMMENT 'Id do cliente',
     nome VARCHAR (255) NOT NULL COMMENT 'Nome do usuário',
     bornDate DATE NOT NULL COMMENT 'Data de inicio',
-    salary FLOAT (20) DEFAULT '0' COMMENT 'Salario do usuario',
+    salary DECIMAL (20) DEFAULT '0' COMMENT 'Salario do usuario',
     position VARCHAR (255) NOT NULL COMMENT 'Posição na empresa',
     PRIMARY KEY (id)
 ) CHARSET = utf8;
