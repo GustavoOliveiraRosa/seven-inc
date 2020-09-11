@@ -22,23 +22,3 @@ CREATE TABLE empregados (
     position VARCHAR (255) NOT NULL COMMENT 'Posição na empresa',
     PRIMARY KEY (id)
 ) CHARSET = utf8;
-
-insert into empregados 
-(nome, bornDate,salary,position) values
-("Gustavo1",STR_TO_DATE('30/04/2016','%d/%m/%Y'),1600.00,"Desenvolvedor Front Jr.");
-
-insert into empregados 
-(nome, bornDate,salary,position) values
-("Gustavo2",STR_TO_DATE('30/04/2016','%d/%m/%Y'),1600.00,"Desenvolvedor Front Jr.");
-
-insert into empregados 
-(nome, bornDate,salary,position) values
-("Gustavo3",STR_TO_DATE('30/04/2016','%d/%m/%Y'),1600.00,"Desenvolvedor Front Jr.");
-
-insert into empregados 
-(nome, bornDate,salary,position) values
-("Gustavo4",STR_TO_DATE('30/04/2016','%d/%m/%Y'),1600.00,"Desenvolvedor Front Jr.");
-
-insert into empregados 
-(nome, bornDate,salary,position) values
-("Gustavo5",STR_TO_DATE('30/04/2016','%d/%m/%Y'),1600.00,"Desenvolvedor Front Jr.");
