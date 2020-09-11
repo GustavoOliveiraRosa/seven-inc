@@ -10,6 +10,7 @@ class EditarEmpregado extends Component {
   constructor(props) {
     super(props)
     this.state = {
+      bornDate_Final: '',
       nome: '',
       salario: '',
       cargo: '',
@@ -49,10 +50,11 @@ class EditarEmpregado extends Component {
          }
          else{
           self.setState({ data: response.data });
-          const data_editada = response.data[0].bornDate;
-          const data_recebida = new Date(data_editada);
-          const data_final = format(data_recebida, 'yyyy/MM/dd');
-          alert(data_final)
+          const data_recebida = response.data[0].bornDate;
+          const data_criada = new Date(data_recebida);
+          const data_final = format(data_criada, 'yyyy/MM/dd');
+          self.setState({ bornDate_Final: data_final.toLocaleString() });
+          alert(self.state.bornDate_Final);
          }
        })
 
