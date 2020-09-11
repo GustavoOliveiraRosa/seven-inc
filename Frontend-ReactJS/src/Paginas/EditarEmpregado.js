@@ -100,7 +100,7 @@ class EditarEmpregado extends Component {
       }
       else{
         alert('Usuario editado com sucesso.')
-        this.setState({ voltarInicio: true })
+        self.setState({ voltarInicio: true })
       }
     })
 
