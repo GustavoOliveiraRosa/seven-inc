@@ -30,6 +30,7 @@ class Inicio extends Component {
         }
       })
       .then(function (response) {
+        const self = this;
         self.setState({ data: response.data });
       })
   }
@@ -52,8 +53,11 @@ class Inicio extends Component {
   }
 
   SearchID() {
+    if (this.state.id_pesquisar===""){
+      this.atualizaTabela()
+    }
+    else{
      /* Fazendo busca por ID */
-
      const self = this;
      const axios = require('axios')
      axios.get(api+"/"+this.state.id_pesquisar,
@@ -63,8 +67,14 @@ class Inicio extends Component {
          }
        })
        .then(function (response) {
-         self.setState({ data: response.data });
+         if (response.data.Status === "Fail"){
+           alert("Nada foi encontrado")
+         }
+         else{
+          self.setState({ data: response.data });
+         }
        })
+      }
   }
 
 
