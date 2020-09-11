@@ -30,7 +30,7 @@ class Inicio extends Component {
         }
       })
       .then(function (response) {
-        const self = this;
+        
         self.setState({ data: response.data });
       })
   }
