@@ -65,7 +65,7 @@ class CriarEmpregado extends Component {
     .then(function (response) {
       console.log(response.data.Status)
       if (response.data.Status === 'Fail'){
-        alert("Fail")
+        alert("Usuário já cadastrado")
       }
       else{
         alert('Usuario criado com sucesso')
