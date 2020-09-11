@@ -6,7 +6,7 @@ O objetivo deste repositório é armazenar os arquivos e também ajudar a comuni
 
 ## Versões
 
-**08/09/2020**
+**11/09/2020**
 
 - [x] API Flask desenvolvida, com endpoints: 
 
@@ -30,9 +30,10 @@ O arquivo index.py contém todos os endpoints e é nele que está armazenado tod
 Dentro da pasta Requeriments, existe um arquivo .sql, responsável por subir o ambiente dentro do banco de dados e popula-lo para primeiros testes.
 
 
-## Como usar
+## Como rodar a aplicação
 
-- Em seu terminal ou CMD, use os comandos:
+Após clonar o repositório, considerando que você já tenha o ambiente para desenvolvimento Python3+ e um banco de dados MYSQL, em seu terminal ou CMD, use os comandos para instalar as dependencias:
+
 * $ pip3 install flask
 * $ pip3 install pymysql
 
@@ -56,6 +57,7 @@ Dentro da pasta Requeriments, existe um arquivo .sql, responsável por subir o a
 
 * $ cd /minhaestrutura/repositorioclonado/Backend-Python/
 
+- Dentro do arquivo /minhaestrutura/repositorioclonado/Backend-Python/functions/mysqlconnector.py altere os dados referentes a conexão com o banco de dados de acordo com as configurações do seu ambiente. 
 
 - E rode a API usando o comando:
 

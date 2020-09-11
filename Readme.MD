@@ -7,9 +7,9 @@ Sejam bem vindos a minha humilde aplicação, meu nome é Gustavo de Oliveira Ro
 **Código API**
 
 - O código da API mencionada no E-mail ( Email.MD ) está na pasta Backend-Python/ 
-- Todos os passos para se colocar a API no ar estão contidos no arquivo Readme.MD .
+- Todos os passos para se colocar a API no ar estão contidos no arquivo Readme.MD presente dentro de cada módulo.
 
 **Código Frontend - ReactJS**
 
-- O código da API mencionada no E-mail ( Email.MD ) está na pasta Frontend-ReactJS/ 
-- Todos os passos para se colocar a API no ar estão contidos no arquivo Readme.MD .
+- O código do Front-End mencionado no E-mail ( Email.MD ) está na pasta Frontend-ReactJS/ 
+- Todos os passos para se colocar a API no ar estão contidos no arquivo Readme.MD presente dentro de cada módulo.
