@@ -18,7 +18,7 @@ CREATE TABLE empregados (
     id INT (11) NOT NULL AUTO_INCREMENT COMMENT 'Id do cliente',
     nome VARCHAR (255) NOT NULL COMMENT 'Nome do usuário',
     bornDate DATE NOT NULL COMMENT 'Data de inicio',
-    salary DECIMAL (20) DEFAULT '0' COMMENT 'Salario do usuario',
+    salary decimal(15,6) DEFAULT '0' COMMENT 'Salario do usuario',
     position VARCHAR (255) NOT NULL COMMENT 'Posição na empresa',
     PRIMARY KEY (id)
 ) CHARSET = utf8;
