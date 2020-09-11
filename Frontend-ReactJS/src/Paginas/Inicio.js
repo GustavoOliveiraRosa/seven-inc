@@ -8,12 +8,14 @@ class Inicio extends Component {
   constructor(props) {
     super(props)
     this.state = {
+      id_pesquisar: "",
       CriarEmpregado: false,
       deslogar: false,
       data: []
     }
     this.Sair = this.Sair.bind(this);
     this.excluir_funcionario = this.excluir_funcionario.bind(this);
+    this.SearchID = this.SearchID.bind(this);
   }
 
   atualizaTabela(){
@@ -47,6 +49,22 @@ class Inicio extends Component {
   Sair() {
     localStorage.setItem('@status_logado', false);
     this.setState({ deslogar: true });
+  }
+
+  SearchID() {
+     /* Fazendo busca por ID */
+
+     const self = this;
+     const axios = require('axios')
+     axios.get(api+"/"+this.state.id_pesquisar,
+       {
+         headers: {
+           Authorization: 'access-control-allow-origin'
+         }
+       })
+       .then(function (response) {
+         self.setState({ data: response.data });
+       })
   }
 
 
@@ -91,10 +109,10 @@ class Inicio extends Component {
         <a className="nav-link"  href="#" onClick={this.Sair}>Sair</a>
       </li>
     </ul>
-    <form className="form-inline my-2 my-lg-0">
-      <input className="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Buscar por nome" />
-      <button className="btn btn-outline-success my-2 my-sm-0" type="submit">Buscar</button>
-    </form>
+    <div className="form-inline my-2 my-lg-0">
+      <input onChange={(event) => this.setState({ id_pesquisar: event.target.value }) } className="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Buscar por nome" />
+      <button className="btn btn-outline-success my-2 my-sm-0" onClick={this.SearchID}>Buscar</button>
+    </div>
   </div>
 </nav>
         <div className="titulo">
