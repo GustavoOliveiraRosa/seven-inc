@@ -8,6 +8,7 @@ class Inicio extends Component {
   constructor(props) {
     super(props)
     this.state = {
+      EditarEmpregado: false,
       id_pesquisar: "",
       CriarEmpregado: false,
       deslogar: false,
@@ -50,6 +51,14 @@ class Inicio extends Component {
   Sair() {
     localStorage.setItem('@status_logado', false);
     this.setState({ deslogar: true });
+  }
+
+
+ 
+
+  EditarEmpregado(id) {
+  localStorage.setItem('@id_editar', id);
+  this.setState({ EditarEmpregado: true })
   }
 
   SearchID() {
@@ -98,6 +107,7 @@ class Inicio extends Component {
   render() {
     return (
       <div>
+        {this.state.EditarEmpregado === true && <Route exact path="/"><Redirect to="/EditarEmpregado" /></Route>}
         {this.state.CriarEmpregado === true && <Route exact path="/"><Redirect to="/CriarEmpregado" /></Route>}
         {this.state.deslogar === true && <Route exact path="/"><Redirect to="/Login" /></Route>}
         <nav className="navbar navbar-expand-lg navbar navbar-dark bg-dark">
@@ -154,7 +164,7 @@ class Inicio extends Component {
                   <td>{resposta.position}</td>
                   <td>
                   <button  data-id={resposta.id} onClick={() => this.excluir_funcionario(resposta.id)}  className="btn btn-danger btn-block">Excluir</button>
-                  <button  className="btn btn-warning btn-block">Editar</button></td>
+                  <button  className="btn btn-warning btn-block" onClick={() => this.EditarEmpregado(resposta.id)}  >Editar</button></td>
                 </tr>
               ))
             }
