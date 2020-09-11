@@ -50,12 +50,16 @@ class EditarEmpregado extends Component {
            alert("Error - Nada encontrado")
          }
          else{
-          self.setState({ data: response.data });
+           // Setando valores relacionados a data
           const data_recebida = response.data[0].bornDate;
           const data_criada = new Date(data_recebida);
           const data_final = format(data_criada, 'yyyy-MM-dd');
           self.setState({ bornDate_Final: data_final.toLocaleString() });
           self.setState({ date: data_final.toLocaleString() });
+          // Setando demais valores
+          self.setState({ nome: response.data[0].nome });
+          self.setState({ cargo: response.data[0].position });
+          self.setState({ salario: response.data[0].salary });
          }
        })
 
@@ -142,14 +146,12 @@ class EditarEmpregado extends Component {
         
         </div>
 
-        {
-          
-              this.state.data.map((resposta =>
+
 <div>
 <div className="ml-4 mr-4">
   <div className="form-group">
     <label >Nome Completo</label>
-    <input type="text" value={resposta.nome} onChange={(event) => this.setState({ nome: event.target.value }) }   className="form-control" aria-describedby="emailHelp" placeholder="" />
+    <input type="text" value={this.state.nome} onChange={(event) => this.setState({ nome: event.target.value }) }   className="form-control" aria-describedby="emailHelp" placeholder="" />
   </div>
   <div className="form-group">
     <label >Data de Inicio</label>
@@ -157,17 +159,15 @@ class EditarEmpregado extends Component {
   </div>
   <div className="form-group">
     <label >Cargo</label>
-    <input value={resposta.position} type="text" onChange={(event) => this.setState({ cargo: event.target.value }) }   className="form-control" aria-describedby="emailHelp" placeholder="" />
+    <input value={this.state.cargo} type="text" onChange={(event) => this.setState({ cargo: event.target.value }) }   className="form-control" aria-describedby="emailHelp" placeholder="" />
   </div>
   <div className="form-group">
     <label >Salário</label>
-    <CurrencyInput value={resposta.salary} decimalSeparator="." thousandSeparator="" ref="myinput"  className="form-control" />
+    <CurrencyInput value={this.state.salario} decimalSeparator="." thousandSeparator="" ref="myinput"  className="form-control" />
   </div>
   <button type="submit" onClick={(this.SendAPI)} className="btn btn-primary">Criar funcionário</button>
   </div>
   </div>
-))
-}
 
   
       </div>
