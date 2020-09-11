@@ -10,6 +10,7 @@ class EditarEmpregado extends Component {
   constructor(props) {
     super(props)
     this.state = {
+      id_editar: "",
       bornDate_Final: '',
       nome: '',
       salario: '',
@@ -33,7 +34,7 @@ class EditarEmpregado extends Component {
     }
 
     const id_editar = localStorage.getItem('@id_editar');
-
+    this.setState({ id_editar: id_editar });
    
      /* Fazendo busca por ID */
      const self = this;
@@ -71,13 +72,13 @@ class EditarEmpregado extends Component {
    const self = this;
 
    event.preventDefault()
-   if(this.state.nome === "" | this.refs.myinput.getMaskedValue() === '0.00' | this.state.cargo === "" | this.state.date === ""){
-     alert("Preencha todos os campos.")
+   if(this.refs.myinput.getMaskedValue() === '0.00'){
+     alert("Fique atento ao salário.")
    }
    else{
     const self = this;
     const axios = require('axios')
-    axios.post(api, {
+    axios.put(api+"/"+this.state.id_editar,{
       nome: this.state.nome,
       salary:this.refs.myinput.getMaskedValue(),
       position:this.state.cargo,
@@ -94,30 +95,22 @@ class EditarEmpregado extends Component {
         alert("Fail")
       }
       else{
-        alert('Usuario criado com sucesso')
-        self.setState({ data: response.data});
+        alert('Usuario editado com sucesso.')
+        this.setState({ voltarInicio: true })
       }
     })
 
 
    }
 
-
-
-
 }
-
-
-
-
 
   render() {
     
 
     return (
       <div>
-        {this.state.voltarInicio === true && <Route exact path="/"><Redirect to="/Login" /></Route>}
-        {this.state.empregadocriado === true && <Route exact path="/"><Redirect to="/Login" /></Route>}
+        {this.state.voltarInicio === true && <Route exact path="/"><Redirect to="/Inicio" /></Route>}
         {this.state.deslogar === true && <Route exact path="/"><Redirect to="/Login" /></Route>}
         <nav className="navbar navbar-expand-lg navbar navbar-dark bg-dark">
   <a className="navbar-brand" href="#">Employees</a>

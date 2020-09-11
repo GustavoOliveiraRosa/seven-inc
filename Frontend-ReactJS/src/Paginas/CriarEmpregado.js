@@ -90,7 +90,7 @@ class CriarEmpregado extends Component {
 
     return (
       <div>
-        {this.state.voltarInicio === true && <Route exact path="/"><Redirect to="/Login" /></Route>}
+        {this.state.voltarInicio === true && <Route exact path="/"><Redirect to="/Inicio" /></Route>}
         {this.state.empregadocriado === true && <Route exact path="/"><Redirect to="/Login" /></Route>}
         {this.state.deslogar === true && <Route exact path="/"><Redirect to="/Login" /></Route>}
         <nav className="navbar navbar-expand-lg navbar navbar-dark bg-dark">
