@@ -52,9 +52,8 @@ class EditarEmpregado extends Component {
           self.setState({ data: response.data });
           const data_recebida = response.data[0].bornDate;
           const data_criada = new Date(data_recebida);
-          const data_final = format(data_criada, 'yyyy/MM/dd');
+          const data_final = format(data_criada, 'yyyy-MM-dd');
           self.setState({ bornDate_Final: data_final.toLocaleString() });
-          alert(self.state.bornDate_Final);
          }
        })
 
@@ -160,7 +159,7 @@ class EditarEmpregado extends Component {
   </div>
   <div className="form-group">
     <label >Data de Inicio</label>
-    <input value='2020-01-09' onChange={(event) => this.setState({ date: event.target.value }) } type="date" data-date-format="DD MMMM YYYY" className="form-control" data-date-format='yy-mm-dd' aria-describedby="emailHelp" />
+    <input value={this.state.bornDate_Final} onChange={(event) => this.setState({ date: event.target.value }) } type="date" data-date-format="DD MMMM YYYY" className="form-control" data-date-format='yy-mm-dd' aria-describedby="emailHelp" />
   </div>
   <div className="form-group">
     <label >Cargo</label>
@@ -170,7 +169,7 @@ class EditarEmpregado extends Component {
     <label >Salário</label>
     <CurrencyInput decimalSeparator="." thousandSeparator="" ref="myinput"  className="form-control" />
   </div>
-  <button type="submit" onClick={(this.SendAPI)} className="btn btn-primary">Criar funcionário</button>
+  <button type="submit" onClick={() => alert(this.state.bornDate_Final)} className="btn btn-primary">Criar funcionário</button>
   </div>
   </div>
 ))
