@@ -163,11 +163,11 @@ class EditarEmpregado extends Component {
   </div>
   <div className="form-group">
     <label >Cargo</label>
-    <input type="text" onChange={(event) => this.setState({ cargo: event.target.value }) }   className="form-control" aria-describedby="emailHelp" placeholder="" />
+    <input value={resposta.position} type="text" onChange={(event) => this.setState({ cargo: event.target.value }) }   className="form-control" aria-describedby="emailHelp" placeholder="" />
   </div>
   <div className="form-group">
     <label >Salário</label>
-    <CurrencyInput decimalSeparator="." thousandSeparator="" ref="myinput"  className="form-control" />
+    <CurrencyInput value={resposta.salary} decimalSeparator="." thousandSeparator="" ref="myinput"  className="form-control" />
   </div>
   <button type="submit" onClick={() => alert(this.state.bornDate_Final)} className="btn btn-primary">Criar funcionário</button>
   </div>
